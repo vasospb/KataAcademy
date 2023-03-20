@@ -17,29 +17,19 @@ public class Main {
         romeDigitsMap.put("IX", 9);
         romeDigitsMap.put("X", 10);
     }
-
-
-    public static String convertToRoman(int number) {
-        String[] romanNumeral = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        int[] decimalValue = {100, 90, 50, 40, 10, 9, 5, 4, 1};
-        StringBuilder roman = new StringBuilder();
-
-        for (int i = 0; i < romanNumeral.length; i++) {
-            while (number >= decimalValue[i]) {
-                number -= decimalValue[i];
-                roman.append(romanNumeral[i]);
-            }
-        }
-
-        return roman.toString();
-    }
-
     public static void main(String[] args) throws Exception {
-        boolean romeDigits = false;
-        System.out.println("Input:");
+
+        System.out.println("Input: ");
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+
+        System.out.println(calc(input));
+
+    }
+
+    public static String calc(String input) throws Exception {
+        boolean romeDigits = false;
         Task task;
 
         String[] strings = null;
@@ -103,13 +93,29 @@ public class Main {
                 break;
         }
         if (!romeDigits) {
-            System.out.println(res);
+            return String.valueOf(res);
         } else if (res < 1)
             throw new Exception("Should be more then Zero");
         else {
-            System.out.println(convertToRoman(res));
+            return convertToRoman(res);
         }
     }
+    public static String convertToRoman(int number) {
+        String[] romanNumeral = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int[] decimalValue = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+        StringBuilder roman = new StringBuilder();
+
+        for (int i = 0; i < romanNumeral.length; i++) {
+            while (number >= decimalValue[i]) {
+                number -= decimalValue[i];
+                roman.append(romanNumeral[i]);
+            }
+        }
+
+        return roman.toString();
+    }
+
+
 }
 
 
