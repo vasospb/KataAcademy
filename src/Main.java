@@ -118,5 +118,10 @@ public class Main {
 
 }
 
-
+enum Task {
+    ADD,
+    DEVIDE,
+    MINUS,
+    MULT
+}
 
